@@ -22,6 +22,7 @@ if (process.env.NODE_ENV == "production") {
 
 //Path
 var users = require(__dirname + '/api/users.js');
+var hotel = require(__dirname + '/api/hotel.js');
 
 app.get('/', function(req, res) {
     res.end('Welcome to apimodeules');
@@ -63,7 +64,7 @@ app.use(express.static(__dirname + '/public'));
 router.post('/user/signup', users.signup);
 router.post('/user/signin', users.signin);
 router.post('/user/forgotpassword', users.ForgotPassword);
-
+router.post('/hotel/bookhotel', hotel.bookHotel);
 // Api with token
 apiRoutes.use(function(req, res, next) {
 
@@ -95,4 +96,4 @@ router.post('/api/user/deactivate', users.deactivate);
 
 app.use('/', router);
 app.listen(app.get('port'));
-console.log("apimodules Started on Port No. ", app.get('port'));
+console.log("Hotel api Started on Port No. ", app.get('port'));
